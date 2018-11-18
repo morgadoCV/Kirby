@@ -98,6 +98,7 @@ bool Player::Start()
 	state = IDLE;
 	App->Save();
 	fade = false;
+	collision_feet = App->collision->AddCollider({ (int)position.x, (int)position.y - 45, 45, 45 }, COLLIDER_PLAYER, this);
 	return true;
 }
 
@@ -108,11 +109,7 @@ bool Player::PreUpdate()
 
 bool Player::Update(float dt)
 {
-	//Set zero
-	//Setzero();
-	//TODO SERGIO 3:
-	//Create a function to change lvls (F1, F2, etc...)
-	//Remember use Setzero();
+	
 
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_REPEAT)
 	{
@@ -202,8 +199,9 @@ bool Player::Update(float dt)
 		}
 	}
 
-	//Draw();
-	//App->map->Draw(1);
+	//Collision follows 
+	collision_feet->SetPos(position.x, position.y - 23);
+
 	return true;
 }
 
@@ -648,4 +646,9 @@ bool Player::CleanUp()
 fPoint* Player::Getposition()
 {
 	return &position;
+}
+
+void Player::OnCollision(Collider* player, Collider* enemy)
+{
+	LOG("HIT!");
 }

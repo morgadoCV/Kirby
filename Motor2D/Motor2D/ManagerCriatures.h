@@ -5,6 +5,8 @@
 #include "EnemyNormal.h"
 #include "Player.h"
 #include "Criature.h"
+
+
 class ManagerCriatures : public j1Module
 {
 public:

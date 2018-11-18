@@ -1,10 +1,57 @@
-﻿  EnemyNormal.cpp
-EnemyNormal.cpp(129): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  EnemyFly.cpp
+EnemyFly.cpp(88): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyFly.cpp(134): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  EnemyNormal.cpp
+EnemyNormal.cpp(87): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyNormal.cpp(133): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  ManagerCriatures.cpp
+  P_Follow.cpp
+  ParticleManager.cpp
+  Player.cpp
+Player.cpp(142): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(146): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(203): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(213): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+Player.cpp(222): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+Player.cpp(250): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(251): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(257): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(258): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(264): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(265): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+Player.cpp(315): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(322): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(333): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(358): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(373): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(397): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(503): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(509): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(515): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(523): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(531): warning C4305: '=': truncamiento de 'double' a 'float'
+Player.cpp(597): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(602): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(617): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+Player.cpp(630): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+Player.cpp(636): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+  j1App.cpp
+j1App.cpp(192): warning C4018: '<': no coinciden signed/unsigned
+  j1Collision.cpp
+  j1Map.cpp
+j1Map.cpp(61): warning C4305: '+=': truncamiento de 'double' a 'float'
+j1Map.cpp(62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(66): warning C4305: '-=': truncamiento de 'double' a 'float'
+j1Map.cpp(67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(72): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(182): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(183): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(671): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+j1Map.cpp(687): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+  j1Scene.cpp
   Generando código
-d:\kirby\motor2d\motor2d\j1map.cpp(284): warning C4715: 'j1Map::GetPositionStart': no todas las rutas de acceso de control devuelven un valor
-d:\kirby\motor2d\motor2d\j1app.cpp(351): warning C4715: 'j1App::DocLoad': no todas las rutas de acceso de control devuelven un valor
-  138 of 646 functions (21.4%) were compiled, the rest were copied from previous compilation.
-    37 functions were new in current compilation
-    31 functions had inline decision re-evaluated but remain unchanged
+  54 of 651 functions ( 8.3%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Motor2D.vcxproj -> D:\Kirby\Motor2D\Release\Motor 2D.exe

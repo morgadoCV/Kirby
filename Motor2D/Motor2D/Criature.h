@@ -1,6 +1,7 @@
 #pragma once
 #include "p2SString.h"
 #include "j1Collision.h"
+#include "p2Log.h"
 
 struct SDL_Texture;
 
@@ -78,8 +79,9 @@ public:
 	virtual void OnCollision(Collider*, Collider*) {}
 
 public:
-	State state;
-	Direction direction;
+	State		state;
+	Direction	direction;
 	p2SString	name;
 	bool		active;
+	Collider*	collision_feet = nullptr;
 };

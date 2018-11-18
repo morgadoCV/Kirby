@@ -63,6 +63,7 @@ bool EnemyNormal::Start()
 	graphics = App->tex->Load("textures/Snow_Man.png");
 	current_animation = &idle;
 	state = IDLE;
+	collision_feet = App->collision->AddCollider({ (int)position.x, (int)position.y, 50, 50 }, COLLIDER_ENEMY_NORMAL, this);
 	return true;
 }
 
@@ -81,8 +82,11 @@ bool EnemyNormal::Update(float dt)
 	{
 		state = IDLE;
 	}
+
+	//Collision follows
+	collision_feet->SetPos(position.x, position.y - 25);
+
 	return true;
-	return false;
 }
 
 void EnemyNormal::processPos()

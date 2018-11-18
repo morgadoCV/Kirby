@@ -1,6 +1,7 @@
 #include "ManagerCriatures.h"
 #include "j1App.h"
 #include "p2Defs.h"
+#include "p2Log.h"
 
 ManagerCriatures::ManagerCriatures() : j1Module()
 {
@@ -60,16 +61,19 @@ void ManagerCriatures::CreatePlayer()
 	player = new Player();
 	player->Awake();
 	elements.add(player);
+	LOG("Player Created!");
 }
 void ManagerCriatures::CreateEnemyFly()
 {
 	EnemyFly* enemy_fly = new EnemyFly();
 	enemy_fly->Awake();
 	elements.add(enemy_fly);
+	LOG("Enemy Fly Created!");
 }
 void ManagerCriatures::CreateEnemyNormal()
 {
 	EnemyNormal* enemy_normal = new EnemyNormal();
 	enemy_normal->Awake();
 	elements.add(enemy_normal);
+	LOG("Enemy Normal Created!");
 }

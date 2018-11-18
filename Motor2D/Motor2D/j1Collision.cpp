@@ -3,6 +3,7 @@
 #include "j1Render.h"
 #include "j1Collision.h"
 #include "p2Log.h"
+#include "Criature.h"
 
 ModuleCollision::ModuleCollision()
 {
@@ -75,8 +76,14 @@ bool ModuleCollision::Update(float dt)
 		}
 	}
 
-	DebugDraw();
+	
 
+	return true;
+}
+
+bool ModuleCollision::PostUpdate()
+{
+	DebugDraw();
 	return true;
 }
 
@@ -129,7 +136,7 @@ bool ModuleCollision::CleanUp()
 	return true;
 }
 
-Collider* ModuleCollision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback)
+Collider* ModuleCollision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Criature* callback)
 {
 	Collider* ret = nullptr;
 
