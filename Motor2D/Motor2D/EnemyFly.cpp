@@ -7,11 +7,16 @@
 #include "j1Window.h"
 #include "j1Textures.h"
 #include "Player.h"
+#include "ManagerCriatures.h"
+#include "j1Map.h"
+#include "j1Astar.h"
 
 
 EnemyFly::EnemyFly() : Criature()
 {
 	name.create("enemyfly");
+	type = Type::FLY;
+
 	idle.PushBack({ 10,  14, 30, 29 });
 	idle.PushBack({ 73,  14, 32, 31 });
 	idle.PushBack({ 134, 11, 32, 32 });
@@ -44,14 +49,14 @@ EnemyFly::EnemyFly() : Criature()
 
 EnemyFly::~EnemyFly()
 {
-
+	RELEASE(current_animation);
+	RELEASE(astar);
+	App->tex->UnLoad(graphics);
+	graphics = nullptr;
 }
 
 bool EnemyFly::Awake()
 {
-	return false;
-	position.create(900, 354);
-	velocity.create(0, 0);
 	return true;
 }
 
@@ -60,7 +65,10 @@ bool EnemyFly::Start()
 	graphics = App->tex->Load("textures/Fly_enemy.png");
 	current_animation = &idle;
 	state = IDLE;
-	collision_feet = App->collision->AddCollider({ (int)position.x, (int)position.y, 64, 64 }, COLLIDER_ENEMY_FLY, this);
+	astar = new j1Astar();
+	PlayerLastPos = App->managerC->player->Getposition();
+	path = astar->GenerateAstar(position, App->managerC->player->Getposition());
+	collision_feet = App->collision->AddCollider({ position.x, position.y, 64, 64 }, COLLIDER_ENEMY_FLY, this);
 	return true;
 }
 
@@ -71,24 +79,58 @@ bool EnemyFly::PreUpdate()
 
 bool EnemyFly::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT)
+	if (PlayerLastPos.DistanceTo(App->managerC->player->Getposition()) > 10)
 	{
-		state = RUN_LEFT;
+		path = astar->GenerateAstar(position, App->managerC->player->Getposition());
+		PlayerLastPos = App->managerC->player->Getposition();
 	}
-	else
-	{
-		state = IDLE;
-	}
+	MoveEnemy(dt);
+	processPos();
 
 	//Collider follows 
-	collision_feet->SetPos(position.x, position.y - 32);
+	//collision_feet->SetPos(position.x, position.y - 32);
 
 	return true;
 }
 
+void EnemyFly::MoveEnemy(float dt)
+{
+	if (App->managerC->player->Getposition().DistanceTo(position) < 350)
+	{
+		iPoint temp = *path->At(path->Count() - 1);
+		int moveX = temp.x - position.x;
+		if (moveX < 0)
+		{
+			position.x -= ceil(-moveX * dt);
+		}
+		else
+		{
+			position.x += ceil(moveX * dt);
+		}
+		int moveY = temp.y - position.y;
+		if (moveY < 0)
+		{
+			position.y -= ceil(-moveY * dt);
+		}
+		else
+		{
+			position.y += ceil(moveY * dt);
+		}
+		if (position.DistanceTo(temp) < 5)
+		{
+			iPoint popiPoint;
+			path->Pop(popiPoint);
+		}
+	}
+	else
+	{
+		//LOG("NO!");
+	}
+}
+
 void EnemyFly::processPos()
 {
-
+	position.y = position.y + velocity.y;   // current velocity components.
 }
 
 void EnemyFly::processGravity()
@@ -128,6 +170,13 @@ void EnemyFly::Draw()
 	}
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	App->render->Blit(graphics, position.x / 2, position.y / 2 - 10, &r, 2);
+	Uint8 alpha = 80;
+	for (int i = 0; i < path->Count(); i++)
+	{
+		iPoint temp = *path->At(i);
+		SDL_Rect t = { temp.x,temp.y,10,10 };
+		App->render->DrawQuad(t, 255, 255, 255, alpha);
+	}
 }
 
 bool EnemyFly::PostUpdate()

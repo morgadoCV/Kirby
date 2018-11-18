@@ -4,6 +4,7 @@
   <app>
     <title>Morgui Kirby</title>
     <organization>UPC</organization>
+    <framerate_cap Cap="30"/>
   </app>
 	
   <renderer>

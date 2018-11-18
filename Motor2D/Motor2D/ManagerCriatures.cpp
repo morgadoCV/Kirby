@@ -76,7 +76,7 @@ void ManagerCriatures::CreateEnemyFly(iPoint position)
 {
 	EnemyFly* enemy_fly = new EnemyFly();
 	enemy_fly->Awake();
-	enemy_fly->Start();
+	//enemy_fly->Start();
 	enemy_fly->position = position;
 	elements.add(enemy_fly);
 	LOG("Enemy Fly Created!");
@@ -86,7 +86,7 @@ void ManagerCriatures::CreateEnemyNormal(iPoint position)
 {
 	EnemyNormal* enemy_normal = new EnemyNormal();
 	enemy_normal->Awake();
-	enemy_normal->Start();
+	//enemy_normal->Start();
 	enemy_normal->position = position;
 	elements.add(enemy_normal);
 	LOG("Enemy Normal Created!");

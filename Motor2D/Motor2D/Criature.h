@@ -33,6 +33,14 @@ enum Direction
 class Criature
 {
 public:
+
+	enum Type
+	{
+		PLAYER,
+		NORMAL,
+		FLY
+	};
+
 	Criature() {};
 	virtual ~Criature() {};
 	// Called before render is available
@@ -90,5 +98,6 @@ public:
 	bool		isInPlataform = false;
 	p2SString	name;
 	bool		active;
+	Type type;
 	Collider*	collision_feet = nullptr;
 };

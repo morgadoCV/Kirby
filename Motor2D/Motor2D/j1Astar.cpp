@@ -89,8 +89,8 @@ p2DynArray<iPoint>* j1Astar::GenerateAstar(iPoint origin, iPoint destination)
 				iPoint world_position = App->map->MapToWorld(iterator->data.position.x, iterator->data.position.y);
 				positions->PushBack(world_position);
 			}
-			iPoint world_position = App->map->MapToWorld(close.node_list.start->data.position.x, close.node_list.start->data.position.y);
-			positions->PushBack(world_position);
+			//iPoint world_position = App->map->MapToWorld(close.node_list.start->data.position.x, close.node_list.start->data.position.y);
+			//positions->PushBack(world_position);
 
 			return positions;
 		}

@@ -18,6 +18,7 @@ Player::Player() : Criature()
 {
 
 	name.create("player");
+	type = Type::PLAYER;
 
 	idle.PushBack({ 3,  5, 24, 21 });
 	idle.PushBack({ 33, 5, 24, 21 });
@@ -629,7 +630,14 @@ void Player::OnCollision(Collider* player, Collider* enemy)
 	//LOG("HIT!");
 	if (player != nullptr && enemy != nullptr)
 	{
-		App->managerC->DeleteEnemyNormal(enemy->callback);
+		if (enemy->callback->type == Type::FLY)
+		{
+			App->managerC->DeleteEnemyFly(enemy->callback);
+		}
+		else if (enemy->callback->type == Type::NORMAL)
+		{
+			App->managerC->DeleteEnemyNormal(enemy->callback);
+		}
 		LOG("Delete Enemy");
 	}
 }
