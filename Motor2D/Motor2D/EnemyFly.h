@@ -4,6 +4,10 @@
 #include "Animation.h"
 //#include "ParticleManager.h"
 //#include "P_Follow.h"
+
+#define AnimationSpeed4 0.15f
+#define AnimationSpeedDead 0.019f
+
 enum State
 {
 	IDLE,
@@ -51,4 +55,12 @@ public:
 	fPoint* Getposition() const;
 	// Called before quitting
 	bool CleanUp();
+
+private:
+	Animation idle;
+	Animation idle_left;
+	Animation fly_rignt;
+	Animation fly_left;
+	Animation dead;
+
 };
