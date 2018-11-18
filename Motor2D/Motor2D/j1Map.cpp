@@ -131,7 +131,8 @@ bool j1Map::IsWalkable(iPoint position)
 {
 	const MapLayer* meta_layer = mapdata.layers.start->next->next->next->data;
 	int red_wall = mapdata.tilesets.start->next->data->firstgid; // RED TILE
-	return red_wall != meta_layer->Get(position.x, position.y);
+	if (position.x < meta_layer->width && position.y < meta_layer->height)
+		return red_wall != meta_layer->Get(position.x, position.y);
 }
 
 float Properties::GetFloat(const char* value, float default_value) const
@@ -450,6 +451,7 @@ bool j1Map::Load(const char* file_name)
 
 	// Load Enemies ---------------------------------------------------------
 	LOG("Loading Enemies!");
+	App->managerC->player->position.create(App->map->GetPositionStart().x, App->map->GetPositionStart().y);
 	LoadEnemies();
 
 	map_loaded = ret;

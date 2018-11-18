@@ -50,6 +50,12 @@ public:
 	const char* GetTitle() const;
 	const char* GetOrganization() const;
 
+	// DT
+	float GetDT()
+	{
+		return dt;
+	}
+
 	//Call to load and save function
 	void Load();
 	void Save() const;

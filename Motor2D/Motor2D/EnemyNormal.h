@@ -4,11 +4,7 @@
 #include "Animation.h"
 #include "Criature.h"
 #include "p2DynArray.h"
-//#include "ParticleManager.h"
-//#include "P_Follow.h"
 
-#define AnimationSpeed4 0.15f
-#define AnimationSpeedDead 0.019f
 
 struct	SDL_Texture;
 class	j1Astar;

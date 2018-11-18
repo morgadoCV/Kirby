@@ -20,7 +20,7 @@ EnemyFly::EnemyFly() : Criature()
 	idle.PushBack({ 10,  14, 30, 29 });
 	idle.PushBack({ 73,  14, 32, 31 });
 	idle.PushBack({ 134, 11, 32, 32 });
-	idle.speed = AnimationSpeed4;
+	idle.speed = AnimationSpeed3;
 	idle_left.PushBack({ 13,193, 30, 29 });
 	idle_left.PushBack({ 75,192, 32, 28 });
 	idle_left.PushBack({ 151,192, 32,31 });
@@ -49,14 +49,16 @@ EnemyFly::EnemyFly() : Criature()
 
 EnemyFly::~EnemyFly()
 {
-	RELEASE(current_animation);
-	RELEASE(astar);
+	current_animation = nullptr;
+	delete astar;;
 	App->tex->UnLoad(graphics);
+	collision_feet->to_delete = true;
 	graphics = nullptr;
 }
 
 bool EnemyFly::Awake()
 {
+	velocity.create(0, 0);
 	return true;
 }
 
@@ -88,7 +90,10 @@ bool EnemyFly::Update(float dt)
 	processPos();
 
 	//Collider follows 
-	//collision_feet->SetPos(position.x, position.y - 32);
+	if (collision_feet != nullptr)
+	{
+		collision_feet->SetPos(position.x, position.y - 32);
+	}
 
 	return true;
 }
@@ -168,15 +173,19 @@ void EnemyFly::Draw()
 		break;
 	}
 	}
-	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect r = current_animation->GetCurrentFrame(App->GetDT());
 	App->render->Blit(graphics, position.x / 2, position.y / 2 - 10, &r, 2);
 	Uint8 alpha = 80;
-	for (int i = 0; i < path->Count(); i++)
+	if (path != nullptr && App->collision->debug)
 	{
-		iPoint temp = *path->At(i);
-		SDL_Rect t = { temp.x,temp.y,10,10 };
-		App->render->DrawQuad(t, 255, 255, 255, alpha);
+		for (int i = 0; i < path->Count(); i++)
+		{
+			iPoint temp = *path->At(i);
+			SDL_Rect t = { temp.x,temp.y,10,10 };
+			App->render->DrawQuad(t, 255, 255, 255, alpha);
+		}
 	}
+
 }
 
 bool EnemyFly::PostUpdate()

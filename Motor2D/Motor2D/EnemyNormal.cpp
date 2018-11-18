@@ -22,7 +22,7 @@ EnemyNormal::EnemyNormal() : Criature()
 	idle.PushBack({ 192, 19, 31, 28 });
 	idle.PushBack({ 254, 18, 29, 29 });
 	idle.PushBack({ 314, 17, 28, 30 });
-	idle.speed = 0.13;
+	idle.speed = AnimationSpeed4;
 	//Left---------------------------------------
 	run_left.PushBack({ 16, 72, 24, 30 });
 	run_left.PushBack({ 71, 74, 27, 28 });
@@ -42,8 +42,8 @@ EnemyNormal::EnemyNormal() : Criature()
 
 EnemyNormal::~EnemyNormal()
 {
-	RELEASE(current_animation);
-	RELEASE(astar);
+	current_animation = nullptr;
+	delete astar;
 	App->tex->UnLoad(graphics);
 	collision_feet->to_delete = true;
 	graphics = nullptr;
@@ -51,6 +51,7 @@ EnemyNormal::~EnemyNormal()
 
 bool EnemyNormal::Awake()
 {
+	velocity.create(0, 0);
 	return true;
 }
 
@@ -85,7 +86,10 @@ bool EnemyNormal::Update(float dt)
 	processGravity(dt);
 
 	//Collision follows
-	collision_feet->SetPos(position.x, position.y - 25);
+	if (collision_feet != nullptr)
+	{
+		collision_feet->SetPos(position.x, position.y - 25);
+	}
 
 	return true;
 }
@@ -183,15 +187,19 @@ void EnemyNormal::Draw()
 		break;
 	}
 	}
-	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect r = current_animation->GetCurrentFrame(App->GetDT());
 	App->render->Blit(graphics, position.x / 2, position.y / 2 - 10, &r, 2);
 	Uint8 alpha = 80;
-	for (int i = 0; i < path->Count(); i++)
+	if (path != nullptr && App->collision->debug)
 	{
-		iPoint temp = *path->At(i);
-		SDL_Rect t = { temp.x,temp.y,10,10 };
-		App->render->DrawQuad(t, 255, 255, 255, alpha);
+		for (int i = 0; i < path->Count(); i++)
+		{
+			iPoint temp = *path->At(i);
+			SDL_Rect t = { temp.x,temp.y,10,10 };
+			App->render->DrawQuad(t, 255, 255, 255, alpha);
+		}
 	}
+	
 }
 
 

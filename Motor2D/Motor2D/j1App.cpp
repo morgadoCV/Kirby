@@ -197,10 +197,20 @@ void j1App::FinishUpdate()
 		avg_fps, last_frame_ms, frames_on_last_update);
 	App->win->SetTitle(title);
 
-	//static char title[256];
-	if (capped_ms > 0 && last_frame_ms < capped_ms)
+	static bool iscapped = true;
+	if (input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN)
 	{
-		SDL_Delay(capped_ms - last_frame_ms);
+		iscapped = !iscapped;
+	}
+
+
+	//static char title[256];
+	if (iscapped)
+	{
+		if (capped_ms > 0 && last_frame_ms < capped_ms)
+		{
+			SDL_Delay(capped_ms - last_frame_ms);
+		}
 	}
 	//sprintf_s(title, 256, "Caped Av.FPS: %.2f", avg_fps);
 	//App->win->SetTitle(title);

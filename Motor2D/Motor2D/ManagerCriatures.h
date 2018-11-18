@@ -27,14 +27,13 @@ public:
 	void CreateEnemyNormal(iPoint position);
 	void DeleteEnemyFly(Criature* enemyFly);
 	void DeleteEnemyNormal(Criature* enemy_normal);
+	void DeleteAllEnemies();
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&)const;
 
 public:
 	p2List<Criature*> elements;
 	Player* player = nullptr;
-	//EnemyFly* enfly = nullptr;
-	//EnemyNormal* ennormal = nullptr;
-	//p2List<EnemyFly> enFly;
-	//p2List<EnemyNormal> enNormal;
+	bool newMap = false;
+
 };

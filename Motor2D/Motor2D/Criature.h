@@ -4,6 +4,10 @@
 #include "p2Log.h"
 #include "p2Point.h"
 
+#define AnimationSpeed4 10.0f
+#define AnimationSpeed3 10.0f
+#define AnimationSpeedDead 9.0f
+
 struct SDL_Texture;
 
 
