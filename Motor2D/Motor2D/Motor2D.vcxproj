@@ -87,6 +87,7 @@
     <ClCompile Include="j1Scene.cpp" />
     <ClCompile Include="j1Collision.cpp" />
     <ClCompile Include="j1TimeNormal.cpp" />
+    <ClCompile Include="ManagerCriatures.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="j1Render.cpp" />
     <ClCompile Include="j1Textures.cpp" />
@@ -100,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Criature.h" />
     <ClInclude Include="EnemyFly.h" />
     <ClInclude Include="EnemyNormal.h" />
     <ClInclude Include="j1FadeToBlack.h" />
@@ -107,6 +109,7 @@
     <ClInclude Include="j1Scene.h" />
     <ClInclude Include="j1Collision.h" />
     <ClInclude Include="j1TimeNormal.h" />
+    <ClInclude Include="ManagerCriatures.h" />
     <ClInclude Include="p2DynArray.h" />
     <ClInclude Include="j1Audio.h" />
     <ClInclude Include="j1Input.h" />

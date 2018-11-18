@@ -10,14 +10,15 @@ ModuleCollision::ModuleCollision()
 		colliders[i] = nullptr;
 
 
-	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
-	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = true;
-	matrix[COLLIDER_PLAYER][COLLIDER_FRUIT] = true;
 
-	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
-	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
-	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_NORMAL] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_FLY] = true;;
+
+	matrix[COLLIDER_ENEMY_NORMAL][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_ENEMY_NORMAL][COLLIDER_ENEMY_FLY] = false;
+	matrix[COLLIDER_ENEMY_FLY][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_ENEMY_FLY][COLLIDER_ENEMY_NORMAL] = false;
+
 
 }
 
@@ -81,7 +82,7 @@ bool ModuleCollision::Update(float dt)
 
 void ModuleCollision::DebugDraw()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_UP)
 		debug = !debug;
 
 	if (debug == false)
@@ -98,19 +99,13 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_NONE: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
-			case COLLIDER_WALL: // blue
-			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
-			break;
 			case COLLIDER_PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
-			case COLLIDER_GOD: //??
+			case COLLIDER_ENEMY_NORMAL: // red
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
-			case COLLIDER_ENEMY: // red
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
-			break;
-			case COLLIDER_FRUIT: // yellow
+			case COLLIDER_ENEMY_FLY: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		}

@@ -13,7 +13,7 @@
 #include "j1Scene.h"
 
 
-Player::Player() : j1Module()
+Player::Player() : Criature()
 {
 
 	name.create("player");
@@ -81,7 +81,7 @@ Player::~Player()
 {
 }
 
-bool Player::Awake(pugi::xml_node& config)
+bool Player::Awake()
 {
 	position.create(85, 354);
 	velocity.create(0, 0);

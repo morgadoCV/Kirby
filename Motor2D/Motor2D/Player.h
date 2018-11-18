@@ -7,6 +7,7 @@
 #include "Animation.h"
 #include "ParticleManager.h"
 #include "P_Follow.h"
+#include "Criature.h"
 
 #define Gravity 0.5
 #define AnimationSpeed4 0.15f
@@ -19,28 +20,7 @@
 
 struct SDL_Texture;
 
-enum State
-{
-	IDLE,
-	W_LEFT,
-	W_RIGHT,
-	RUN_LEFT,
-	RUN_RIGHT,
-	JUMP_LEFT,
-	JUMP_RIGHT,
-	FLY_LEFT,
-	FLY_RIGHT,
-	DEAD
-};
 
-enum Direction
-{
-	NON,
-	UP,
-	LEFT,
-	DOWN,
-	RIGHT
-};
 
 enum Levels
 {
@@ -48,7 +28,7 @@ enum Levels
    LVL_2
 };
 
-class Player : public j1Module
+class Player : public Criature
 {
 public:
 
@@ -58,7 +38,7 @@ public:
 	virtual ~Player();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node& conf);
+	bool Awake();
 
 	// Called before the first frame
 	bool Start();

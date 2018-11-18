@@ -8,9 +8,7 @@
 	</audio>
 	<map />
 	<scene />
-	<player>
-		<position x="85" y="354" Actual_LVL="0" />
-	</player>
+	<:anonymous />
 	<:anonymous />
 	<fadetoblack />
 	<renderer>

@@ -5,6 +5,7 @@
 #include "j1Render.h"
 #include "j1Textures.h"
 #include "ParticleManager.h"
+#include "ManagerCriatures.h"
 #include "j1Map.h"
 #include <math.h>
 
@@ -53,14 +54,14 @@ void j1Map::Draw(int time)
 						SDL_Rect r = tileset->GetTileRect(tile_id);
 						iPoint pos = MapToWorld(x, y);
 
-						if (App->player->CanFollowPlayer() && App->player->isMove)
+						if (App->managerC->player->CanFollowPlayer() && App->managerC->player->isMove)
 						{
-							if (App->player->GetDirection() == LEFT)
+							if (App->managerC->player->GetDirection() == LEFT)
 							{
 								posBackground.x += VelocityParallax;
 								App->render->Blit(tileset->texture, pos.x + posBackground.x, pos.y, &r);
 							}
-							else if (App->player->GetDirection() == RIGHT)
+							else if (App->managerC->player->GetDirection() == RIGHT)
 							{
 								posBackground.x -= VelocityParallax;
 								App->render->Blit(tileset->texture, pos.x + posBackground.x, pos.y, &r);
@@ -666,14 +667,14 @@ void j1Map::SetParticles()
 			rect.w = obj->properties.GetInt("Rect_W");
 			rect.h = obj->properties.GetInt("Rect_H");
 			//Create Particle Follow
-			App->particles->CreateFollow_P(App->player->Getposition(),
+			App->particles->CreateFollow_P(App->managerC->player->Getposition(),
 			fPoint(obj->properties.GetInt("Offset_X"),obj->properties.GetInt("Offset_Y")),
 				rect, iPoint(obj->width, obj->height),
 				iPoint(obj->properties.GetInt("TimeLifeMax"),obj->properties.GetInt("TimeLifeMin")),
 				obj->properties.GetInt("Size"),
 				obj->properties.GetInt("NumTextureParticle"),
 				obj->properties.GetInt("NumParticles"));
-			App->player->particlePlayer = App->particles->Group_Follow.start->data;//This is only use 1 Particle Follow
+			App->managerC->player->particlePlayer = App->particles->Group_Follow.start->data;//This is only use 1 Particle Follow
 		}
 		if (obj->properties.GetInt("Type_particle") == 1)//FIRE
 		{

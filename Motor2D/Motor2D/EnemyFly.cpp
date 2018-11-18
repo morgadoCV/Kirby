@@ -1,6 +1,15 @@
 #include "EnemyFly.h"
+#include "j1App.h"
+#include "j1Input.h"
+#include "j1Textures.h"
+#include "j1Audio.h"
+#include "j1Render.h"
+#include "j1Window.h"
+#include "j1Textures.h"
+#include "Player.h"
 
-EnemyFly::EnemyFly()
+
+EnemyFly::EnemyFly() : Criature()
 {
 	name.create("enemyfly");
 	idle.PushBack({ 10,  14, 30, 29 });
@@ -12,12 +21,14 @@ EnemyFly::EnemyFly()
 	idle_left.PushBack({ 151,192, 32,31 });
 	idle_left.speed = AnimationSpeed4;
 	//Left---------------------------------------
-	fly_rignt.PushBack({ 9,  63, 36, 48 });
-	fly_rignt.PushBack({ 70, 64, 36, 46 });
-	fly_rignt.PushBack({ 127,66, 39, 32 });
-	fly_rignt.PushBack({ 190,75, 39, 32 });
-	fly_rignt.PushBack({ 251,76, 37, 30 });
-	fly_rignt.speed = AnimationSpeed4;
+	fly_right.PushBack({ 9,  63, 36, 48 });
+	fly_right.PushBack({ 70, 64, 36, 46 });
+	fly_right.PushBack({ 127,66, 39, 32 });
+	fly_right.PushBack({ 190,75, 39, 32 });
+	fly_right.PushBack({ 251,76, 37, 30 });
+
+	//Right--------------------------------------
+	fly_right.speed = AnimationSpeed4;
 	fly_left.PushBack({ 13, 245, 36, 48 });
 	fly_left.PushBack({ 72, 245, 36, 46 });
 	fly_left.PushBack({ 129,244, 39, 32 });
@@ -40,24 +51,38 @@ EnemyFly::~EnemyFly()
 
 }
 
-bool EnemyFly::Awake(pugi::xml_node & conf)
+bool EnemyFly::Awake()
 {
 	return false;
+	position.create(300, 354);
+	velocity.create(0, 0);
+	return true;
 }
 
 bool EnemyFly::Start()
 {
-	return false;
+	graphics = App->tex->Load("textures/Fly_enemy.png");
+	current_animation = &idle;
+	state = IDLE;
+	return true;
 }
 
 bool EnemyFly::PreUpdate()
 {
-	return false;
+	return true;
 }
 
 bool EnemyFly::Update(float dt)
 {
-	return false;
+	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT)
+	{
+		state = RUN_LEFT;
+	}
+	else
+	{
+		state = IDLE;
+	}
+	return true;
 }
 
 void EnemyFly::processPos()
@@ -77,17 +102,42 @@ void EnemyFly::ReturnToZero()
 
 void EnemyFly::Draw()
 {
-
+	switch (state)
+	{
+	case IDLE:
+	{
+		current_animation = &idle;
+		break;
+	}
+	case RUN_LEFT:
+	{
+		current_animation = &fly_left;
+		break;
+	}
+	case RUN_RIGHT:
+	{
+		current_animation = &fly_right;
+		break;
+	}
+	case DEAD:
+	{
+		current_animation = &dead;
+		break;
+	}
+	}
+	SDL_Rect r = current_animation->GetCurrentFrame();
+	App->render->Blit(graphics, position.x / 2, position.y / 2 - 10, &r, 2);
 }
 
 bool EnemyFly::PostUpdate()
 {
-	return false;
+	Draw();
+	return true;
 }
 
 bool EnemyFly::Load(pugi::xml_node &)
 {
-	return false;
+	return true;
 }
 
 bool EnemyFly::Save(pugi::xml_node &) const
@@ -107,5 +157,5 @@ fPoint * EnemyFly::Getposition() const
 
 bool EnemyFly::CleanUp()
 {
-	return false;
+	return true;
 }
