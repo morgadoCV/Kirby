@@ -175,6 +175,16 @@ bool Player::Update(float dt)
 		{
 			now_switch = false;
 			App->Load();
+			if (actualvl != LVL_2)
+			{
+				App->render->camera.x = 0;
+				App->render->camera.y = 0;
+			}
+			else
+			{
+				App->render->camera.x = 0;
+				App->render->camera.y = App->win->GetHeight() - App->map->mapdata.height * App->map->mapdata.tile_height;
+			}
 		}
 		if (App->fade->Checkfadefromblack() && fade)
 		{
@@ -206,7 +216,7 @@ void Player::ChangeLVL()
 		App->render->camera.x = 0;
 		App->render->camera.y = App->win->GetHeight() - App->map->mapdata.height * App->map->mapdata.tile_height;
 		actualvl = LVL_2;
-		App->Save();
+		//App->Save();
 	}
 	else if (actualvl == LVL_2)
 	{
@@ -215,7 +225,7 @@ void Player::ChangeLVL()
 		App->render->camera.x = 0;
 		App->render->camera.y = 0;
 		actualvl = LVL_1;
-		App->Save();
+		//App->Save();
 	}
 }
 
@@ -236,7 +246,20 @@ bool Player::Load(pugi::xml_node &node)
 	state = IDLE;
 	if (actualvl != node.child("position").attribute("Actual_LVL").as_int())
 	{
-		StartFromBeginCurrentLvl();
+		if(LVL_1 != node.child("position").attribute("Actual_LVL").as_int())
+		{
+			ChangeMap("LVL2.tmx");
+			position.x = node.child("position").attribute("x").as_int();
+			position.y = node.child("position").attribute("y").as_int();
+			actualvl = LVL_2;
+		}
+		else
+		{
+			ChangeMap("LVL3.tmx");
+			position.x = node.child("position").attribute("x").as_int();
+			position.y = node.child("position").attribute("y").as_int();
+			actualvl = LVL_1;
+		}
 	}
 	else
 	{
@@ -305,7 +328,8 @@ void Player::FollowPlayer(float speed)
 
 void Player::Input()
 {
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT &&
+		App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 	{
 		direction = LEFT;
 		if (App->map->MovementCost(position.x - Velocity_X, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
@@ -330,7 +354,7 @@ void Player::Input()
 		if (!isFly)state = IDLE;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_IDLE)
 	{
 		direction = LEFT;
 		if (App->map->MovementCost(position.x - Velocity_X * 2, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
@@ -343,15 +367,9 @@ void Player::Input()
 			isMove = false;
 		if (!isFly)state = RUN_LEFT;
 	}
-	else if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_UP)
-	{
-		direction = NON;
 
-		isMove = false;
-		if (!isFly)state = IDLE;
-	}
 
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 	{
 		direction = RIGHT;
 		if (App->map->MovementCost(position.x + Velocity_X, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
@@ -375,7 +393,7 @@ void Player::Input()
 		if (!isFly)state = IDLE;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_IDLE)
 	{
 		direction = RIGHT;
 		if (App->map->MovementCost(position.x + Velocity_X * 2, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
@@ -388,12 +406,7 @@ void Player::Input()
 			isMove = false;
 		if (!isFly)state = RUN_RIGHT;
 	}
-	else if (App->input->GetKey(SDL_SCANCODE_E) == KEY_UP)
-	{
-		direction = NON;
-		isMove = false;
-		if (!isFly)state = IDLE;
-	}
+
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
@@ -617,16 +630,12 @@ void Player::StartFromBeginCurrentLvl()
 		ChangeMap("LVL2.tmx");
 
 		position.create(App->map->GetPositionStart().x, App->map->GetPositionStart().y);
-		App->render->camera.x = 0;
-		App->render->camera.y = App->win->GetHeight() - App->map->mapdata.height * App->map->mapdata.tile_height;
 		actualvl = LVL_2;
 	}
 	else if (actualvl != LVL_2)
 	{
 		ChangeMap("LVL3.tmx");
 		position.create(App->map->GetPositionStart().x, App->map->GetPositionStart().y);
-		App->render->camera.x = 0;
-		App->render->camera.y = 0;
 		actualvl = LVL_1;
 	}
 }
