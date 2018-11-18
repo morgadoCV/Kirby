@@ -80,6 +80,9 @@ bool j1App::Awake()
 	title.create(app_config.child("title").child_value());
 	organization.create(app_config.child("organization").child_value());
 
+	int cap = app_config.child("framerate_cap").attribute("Cap").as_int(60);
+	
+
 	if(ret == true)
 	{
 		p2List_item<j1Module*>* item;
@@ -180,13 +183,13 @@ void j1App::FinishUpdate()
 
 	uint32 last_frame_ms = frame_time.Read();
 	float avg_fps = float(frame_count) / startup_time.ReadSec();
-	static char title[256];
+	//static char title[256];
 	if (capped_ms > 0 && last_frame_ms < capped_ms)
 	{
 		SDL_Delay(capped_ms - last_frame_ms);
 	}
-	sprintf_s(title, 256, "Caped Av.FPS: %.2f", avg_fps);
-	App->win->SetTitle(title);
+	//sprintf_s(title, 256, "Caped Av.FPS: %.2f", avg_fps);
+	//App->win->SetTitle(title);
 
 }
 

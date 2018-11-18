@@ -8,6 +8,9 @@
 #include "j1Module.h"
 #include "Player.h"
 
+#define VelocityParallax 0.0001
+
+
 // TODO 2: Create a struct to hold information for a TileSet
 // Ignore Terrain Types and Tile Types for now, but we want the image!
 // ----------------------------------------------------

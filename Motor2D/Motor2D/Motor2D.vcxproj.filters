@@ -58,6 +58,12 @@
     <ClCompile Include="j1FadeToBlack.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyFly.cpp">
+      <Filter>Desenvolupament  ========\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyNormal.cpp">
+      <Filter>Desenvolupament  ========\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -138,6 +144,12 @@
     <ClInclude Include="j1FadeToBlack.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyFly.h">
+      <Filter>Desenvolupament  ========\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyNormal.h">
+      <Filter>Desenvolupament  ========\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -163,6 +175,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Particle Manager">
       <UniqueIdentifier>{a37af7ae-74b3-45b8-b811-68c18eac7d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Enemies">
+      <UniqueIdentifier>{7e0b0a53-6e57-44d1-aeb1-4c1eff1e011e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

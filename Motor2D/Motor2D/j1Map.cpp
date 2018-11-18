@@ -57,12 +57,12 @@ void j1Map::Draw(int time)
 						{
 							if (App->player->GetDirection() == LEFT)
 							{
-								posBackground.x += 0.0001;
+								posBackground.x += VelocityParallax;
 								App->render->Blit(tileset->texture, pos.x + posBackground.x, pos.y, &r);
 							}
 							else if (App->player->GetDirection() == RIGHT)
 							{
-								posBackground.x -= 0.0001;
+								posBackground.x -= VelocityParallax;
 								App->render->Blit(tileset->texture, pos.x + posBackground.x, pos.y, &r);
 							}
 						}
