@@ -43,6 +43,7 @@ bool ManagerCriatures::Start()
 
 bool ManagerCriatures::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdate", Profiler::Color::Red);
 	p2List_item<Criature*>* item = elements.start;
 	while (item != NULL)
 	{
@@ -54,6 +55,7 @@ bool ManagerCriatures::PreUpdate()
 
 bool ManagerCriatures::Update(float dt)
 {
+	BROFILER_CATEGORY("Update", Profiler::Color::Blue);
 	p2List_item<Criature*>* item = elements.start;
 	while (item != NULL)
 	{
@@ -65,6 +67,7 @@ bool ManagerCriatures::Update(float dt)
 
 bool ManagerCriatures::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdate", Profiler::Color::Green);
 	p2List_item<Criature*>* item = elements.start;
 	while (item != NULL)
 	{
@@ -81,6 +84,7 @@ bool ManagerCriatures::PostUpdate()
 
 void ManagerCriatures::CreatePlayer()
 {
+	BROFILER_CATEGORY("CreatePlayer", Profiler::Color::Black);
 	player = new Player();
 	player->Awake();
 	elements.add(player);
@@ -89,6 +93,7 @@ void ManagerCriatures::CreatePlayer()
 
 void ManagerCriatures::CreateEnemyFly(iPoint position)
 {
+	BROFILER_CATEGORY("CreateEnemyFly", Profiler::Color::Black);
 	EnemyFly* enemy_fly = new EnemyFly();
 	enemy_fly->Awake();
 	enemy_fly->Start();
@@ -99,6 +104,7 @@ void ManagerCriatures::CreateEnemyFly(iPoint position)
 
 void ManagerCriatures::CreateEnemyNormal(iPoint position)
 {
+	BROFILER_CATEGORY("CreateEnemyNormal", Profiler::Color::Black);
 	EnemyNormal* enemy_normal = new EnemyNormal();
 	enemy_normal->Awake();
 	enemy_normal->Start();

@@ -85,6 +85,7 @@ Player::~Player()
 
 bool Player::Awake()
 {
+	BROFILER_CATEGORY("Awake Player", Profiler::Color::Red);
 	position.create(85, 354);
 	velocity.create(0, 0);
 	//TODO SERGIO 2: Init start position
@@ -95,6 +96,7 @@ bool Player::Awake()
 
 bool Player::Start()
 {
+	BROFILER_CATEGORY("Start Player", Profiler::Color::Red);
 	graphics = App->tex->Load("textures/Kirby.png");
 	current_animation = &idle;
 	state = IDLE;
@@ -112,7 +114,7 @@ bool Player::PreUpdate()
 bool Player::Update(float dt)
 {
 	
-
+	BROFILER_CATEGORY("Update Player", Profiler::Color::Red);
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 	{
 		App->managerC->DeleteAllEnemies();
@@ -224,6 +226,7 @@ void Player::ChangeLVL()
 
 bool Player::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdate Player", Profiler::Color::Red);
 	if (isFly == false && isMove && isInPlataform)
 		particlePlayer->active = true;
 	else
@@ -330,6 +333,7 @@ void Player::FollowPlayer(float speed)
 
 void Player::Input(float dt)
 {
+	BROFILER_CATEGORY("Input Player", Profiler::Color::Red);
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT &&
 		App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 	{
@@ -513,6 +517,7 @@ void Player::processGravity(float dt)
 
 void Player::Draw()
 {
+	BROFILER_CATEGORY("Draw Player", Profiler::Color::Red);
 	switch (state)
 	{
 	case IDLE:

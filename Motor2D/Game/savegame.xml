@@ -10,7 +10,7 @@
 	<scene />
 	<Criatures>
 		<Player>
-			<position x="96" y="369" Actual_LVL="0" />
+			<position x="96" y="320" Actual_LVL="0" />
 		</Player>
 	</Criatures>
 	<:anonymous />

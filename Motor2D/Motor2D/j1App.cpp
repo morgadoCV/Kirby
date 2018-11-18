@@ -79,6 +79,7 @@ void j1App::AddModule(j1Module* module)
 // Called before render is available
 bool j1App::Awake()
 {
+	BROFILER_CATEGORY("Awake", Profiler::Color::Orchid);
 	bool ret = LoadConfig();
 
 	// self-config
@@ -106,6 +107,7 @@ bool j1App::Awake()
 // Called before the first frame
 bool j1App::Start()
 {
+	BROFILER_CATEGORY("Start", Profiler::Color::Orchid);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -220,6 +222,7 @@ void j1App::FinishUpdate()
 // Call modules before each loop iteration
 bool j1App::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdate", Profiler::Color::Aqua);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -242,6 +245,7 @@ bool j1App::PreUpdate()
 // Call modules on each loop iteration
 bool j1App::DoUpdate()
 {
+	BROFILER_CATEGORY("PostUpdate", Profiler::Color::MediumPurple);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -285,6 +289,7 @@ bool j1App::PostUpdate()
 // Called before quitting
 bool j1App::CleanUp()
 {
+	BROFILER_CATEGORY("CleanUp", Profiler::Color::LightGreen);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.end;

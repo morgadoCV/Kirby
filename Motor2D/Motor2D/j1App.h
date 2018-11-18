@@ -5,6 +5,7 @@
 #include "j1Module.h"
 #include "j1TimeNormal.h"
 #include "PugiXml\src\pugixml.hpp"
+#include "Brofiler\Brofiler.h"
 
 // Modules
 class j1Window;

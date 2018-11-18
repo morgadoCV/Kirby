@@ -1,70 +1,107 @@
 ﻿  EnemyFly.cpp
-EnemyFly.cpp(109): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyFly.cpp(113): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyFly.cpp(118): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyFly.cpp(122): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyFly.cpp(181): warning C4018: '<': no coinciden signed/unsigned
+EnemyFly.cpp(112): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyFly.cpp(116): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyFly.cpp(121): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyFly.cpp(125): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyFly.cpp(185): warning C4018: '<': no coinciden signed/unsigned
 d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   d:\kirby\motor2d\motor2d\p2Point.h(110): note: durante la compilación de la función miembro de plantilla clase de 'int p2Point<int>::DistanceTo(const p2Point<int> &) const'
-  EnemyFly.cpp(84): note: vea la referencia a la creación de instancias de plantilla de función 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' que se está compilando
+  EnemyFly.cpp(87): note: vea la referencia a la creación de instancias de plantilla de función 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' que se está compilando
   d:\kirby\motor2d\motor2d\Criature.h(97): note: vea la referencia a la creación de instancias de plantilla clase de 'p2Point<int>' que se está compilando
 d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
   EnemyNormal.cpp
-EnemyNormal.cpp(105): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyNormal.cpp(109): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyNormal.cpp(125): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-EnemyNormal.cpp(195): warning C4018: '<': no coinciden signed/unsigned
+EnemyNormal.cpp(107): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyNormal.cpp(111): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyNormal.cpp(127): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+EnemyNormal.cpp(198): warning C4018: '<': no coinciden signed/unsigned
 d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   d:\kirby\motor2d\motor2d\p2Point.h(110): note: durante la compilación de la función miembro de plantilla clase de 'int p2Point<int>::DistanceTo(const p2Point<int> &) const'
-  EnemyNormal.cpp(78): note: vea la referencia a la creación de instancias de plantilla de función 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' que se está compilando
+  EnemyNormal.cpp(80): note: vea la referencia a la creación de instancias de plantilla de función 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' que se está compilando
   d:\kirby\motor2d\motor2d\Criature.h(97): note: vea la referencia a la creación de instancias de plantilla clase de 'p2Point<int>' que se está compilando
 d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  j1Astar.cpp
+  j1FadeToBlack.cpp
+  j1Main.cpp
+  j1App.cpp
+j1App.cpp(212): warning C4018: '<': no coinciden signed/unsigned
+  j1Audio.cpp
+  j1Input.cpp
+  j1Map.cpp
+j1Map.cpp(62): warning C4305: '+=': truncamiento de 'double' a 'float'
+j1Map.cpp(63): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(67): warning C4305: '-=': truncamiento de 'double' a 'float'
+j1Map.cpp(68): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(73): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(191): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(192): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(707): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+j1Map.cpp(723): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+  j1Scene.cpp
+  j1Collision.cpp
+  j1TimeNormal.cpp
   ManagerCriatures.cpp
+  p2Log.cpp
+  j1Render.cpp
+  j1Textures.cpp
+  j1Window.cpp
+  Particle.cpp
+Particle.cpp(162): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  ParticleManager.cpp
+  Player.cpp
+Player.cpp(301): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(301): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(308): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(308): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(320): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(320): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(322): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(327): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(327): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(329): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(341): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(344): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(364): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(367): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(379): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(382): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(401): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(404): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(490): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(510): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Compilando...
+  pugixml.cpp
+  P_Fire.cpp
   P_Follow.cpp
 P_Follow.cpp(11): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 P_Follow.cpp(12): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 P_Follow.cpp(93): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 P_Follow.cpp(95): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-  ParticleManager.cpp
-  Player.cpp
-Player.cpp(298): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(298): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(305): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(305): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(317): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(317): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(319): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(324): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(324): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(326): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(337): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(340): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(360): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(363): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(375): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(378): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(397): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(400): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(486): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(506): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  j1App.cpp
-j1App.cpp(210): warning C4018: '<': no coinciden signed/unsigned
-  j1Astar.cpp
-  j1Collision.cpp
-  j1Map.cpp
-j1Map.cpp(61): warning C4305: '+=': truncamiento de 'double' a 'float'
-j1Map.cpp(62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-j1Map.cpp(66): warning C4305: '-=': truncamiento de 'double' a 'float'
-j1Map.cpp(67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-j1Map.cpp(72): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-j1Map.cpp(190): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-j1Map.cpp(191): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-j1Map.cpp(706): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
-j1Map.cpp(722): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
-  j1Scene.cpp
   Generando código
-  6 of 709 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+  0 of 712 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
+EnemyFly.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+EnemyNormal.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Astar.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1FadeToBlack.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Main.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1App.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Audio.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Input.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Map.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Scene.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Collision.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1TimeNormal.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+ManagerCriatures.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+p2Log.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Render.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Textures.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+j1Window.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+Particle.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+ParticleManager.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+Player.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+pugixml.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+P_Fire.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
+P_Follow.obj : warning LNK4020: un registro de tipo de 'd:\kirby\motor2d\motor2d\release\vc141.pdb' está dañado; puede que algunos símbolos y tipos no sean accesibles desde el depurador
   Motor2D.vcxproj -> D:\Kirby\Motor2D\Release\Motor 2D.exe

@@ -51,12 +51,14 @@ EnemyNormal::~EnemyNormal()
 
 bool EnemyNormal::Awake()
 {
+	BROFILER_CATEGORY("Awake Enemy Normal", Profiler::Color::Yellow);
 	velocity.create(0, 0);
 	return true;
 }
 
 bool EnemyNormal::Start()
 {
+	BROFILER_CATEGORY("Start Enemy Normal", Profiler::Color::Yellow);
 	graphics = App->tex->Load("textures/Snow_Man.png");
 	current_animation = &idle;
 	state = IDLE;
@@ -74,7 +76,7 @@ bool EnemyNormal::PreUpdate()
 
 bool EnemyNormal::Update(float dt)
 {
-
+	BROFILER_CATEGORY("Update Enemy Normal", Profiler::Color::Yellow);
 	if (PlayerLastPos.DistanceTo(App->managerC->player->Getposition()) > 10)
 	{
 		path = astar->GenerateAstar(position, App->managerC->player->Getposition());
@@ -164,6 +166,7 @@ void EnemyNormal::processGravity(float dt)
 
 void EnemyNormal::Draw()
 {
+	BROFILER_CATEGORY("Draw Enemy Normal", Profiler::Color::Yellow);
 	switch (state)
 	{
 	case IDLE:

@@ -31,6 +31,7 @@ bool j1Map::Awake(pugi::xml_node& config)
 
 void j1Map::Draw(int time)
 {
+	BROFILER_CATEGORY("Draw Map", Profiler::Color::DarkBlue);
 	if(map_loaded == false)
 		return;
 
@@ -381,7 +382,7 @@ bool j1Map::MovementCost(int x, int y, int width, int height, Direction dir) con
 // Load new map
 bool j1Map::Load(const char* file_name)
 {
-
+	BROFILER_CATEGORY("Load Map", Profiler::Color::DarkBlue);
 	bool ret = true;
 	p2SString tmp("%s%s", folder.GetString(), file_name);
 

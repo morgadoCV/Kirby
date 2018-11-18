@@ -47,6 +47,7 @@ bool ParticleManager::PreUpdate()
 
 bool ParticleManager::Update(float dt)
 {
+	BROFILER_CATEGORY("Update Particle System", Profiler::Color::Peru);
 	////SET FIRE
 	//if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	//{
@@ -75,6 +76,7 @@ bool ParticleManager::Update(float dt)
 
 bool ParticleManager::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdate Particle System", Profiler::Color::Peru);
 	//Iterate all list
 	//Group FOLLOW -------------------------------------------------
 	p2List_item<P_Follow*>* item = Group_Follow.start;
