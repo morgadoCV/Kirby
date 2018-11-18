@@ -127,6 +127,13 @@ int Properties::GetInt(const char* value, int default_value) const
 	return default_value;
 }
 
+bool j1Map::IsWalkable(iPoint position)
+{
+	const MapLayer* meta_layer = mapdata.layers.start->next->next->next->data;
+	int red_wall = mapdata.tilesets.start->next->data->firstgid; // RED TILE
+	return red_wall == meta_layer->Get(position.x, position.y);
+}
+
 float Properties::GetFloat(const char* value, float default_value) const
 {
 	p2List_item<Property*>* item = properties.start;

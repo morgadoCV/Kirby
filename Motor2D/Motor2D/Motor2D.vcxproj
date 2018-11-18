@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClCompile Include="EnemyFly.cpp" />
     <ClCompile Include="EnemyNormal.cpp" />
+    <ClCompile Include="j1Astar.cpp" />
     <ClCompile Include="j1FadeToBlack.cpp" />
     <ClCompile Include="j1Main.cpp" />
     <ClCompile Include="j1App.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Criature.h" />
     <ClInclude Include="EnemyFly.h" />
     <ClInclude Include="EnemyNormal.h" />
+    <ClInclude Include="j1Astar.h" />
     <ClInclude Include="j1FadeToBlack.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1Scene.h" />
@@ -122,6 +124,7 @@
     <ClInclude Include="j1Render.h" />
     <ClInclude Include="j1Textures.h" />
     <ClInclude Include="j1Window.h" />
+    <ClInclude Include="p2Queue.h" />
     <ClInclude Include="p2SString.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleManager.h" />
