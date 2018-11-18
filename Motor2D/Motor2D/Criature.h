@@ -2,6 +2,7 @@
 #include "p2SString.h"
 #include "j1Collision.h"
 #include "p2Log.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -81,6 +82,12 @@ public:
 public:
 	State		state;
 	Direction	direction;
+	iPoint		position;
+	iPoint		velocity;
+	bool		isFly = false;
+	Direction	goZero = NON;
+	bool		returntoZero = false;
+	bool		isInPlataform = false;
 	p2SString	name;
 	bool		active;
 	Collider*	collision_feet = nullptr;

@@ -21,19 +21,15 @@ EnemyFly::EnemyFly() : Criature()
 	idle_left.PushBack({ 151,192, 32,31 });
 	idle_left.speed = AnimationSpeed4;
 	//Left---------------------------------------
-	fly_right.PushBack({ 9,  63, 36, 48 });
-	fly_right.PushBack({ 70, 64, 36, 46 });
-	fly_right.PushBack({ 127,66, 39, 32 });
-	fly_right.PushBack({ 190,75, 39, 32 });
-	fly_right.PushBack({ 251,76, 37, 30 });
+	fly_right.PushBack({ 10,  14, 30, 29 });
+	fly_right.PushBack({ 73,  14, 32, 31 });
+	fly_right.PushBack({ 134, 11, 32, 32 });
+	fly_right.speed = AnimationSpeed4;
 
 	//Right--------------------------------------
-	fly_right.speed = AnimationSpeed4;
-	fly_left.PushBack({ 13, 245, 36, 48 });
-	fly_left.PushBack({ 72, 245, 36, 46 });
-	fly_left.PushBack({ 129,244, 39, 32 });
-	fly_left.PushBack({ 190,251, 39, 32 });
-	fly_left.PushBack({ 250,252, 37, 30 });
+	fly_left.PushBack({ 13,193, 30, 29 });
+	fly_left.PushBack({ 75,192, 32, 28 });
+	fly_left.PushBack({ 151,192, 32,31 });
 	fly_left.speed = AnimationSpeed4;
 
 	//Death--------------------------------------
@@ -54,7 +50,7 @@ EnemyFly::~EnemyFly()
 bool EnemyFly::Awake()
 {
 	return false;
-	position.create(300, 354);
+	position.create(900, 354);
 	velocity.create(0, 0);
 	return true;
 }

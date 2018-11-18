@@ -2,7 +2,7 @@
 #include "PugiXml/src/pugixml.hpp"
 #include "p2List.h"
 #include "p2DynArray.h"
-#include "p2PQueue.h"
+#include "p2Queue.h"
 #include "p2Point.h"
 #include "j1Module.h"
 #define COST_MAP 100

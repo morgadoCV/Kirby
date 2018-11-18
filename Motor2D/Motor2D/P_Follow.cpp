@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "j1Window.h"
 
-P_Follow::P_Follow(fPoint* object, fPoint offset_follow, SDL_Rect initial_rect, iPoint area_, iPoint timelife_, int size, int num_textures, int num_particles, bool active_, bool mouse)
+P_Follow::P_Follow(iPoint* object, fPoint offset_follow, SDL_Rect initial_rect, iPoint area_, iPoint timelife_, int size, int num_textures, int num_particles, bool active_, bool mouse)
 {
 	//TODO 3:---------------------------------------------------------------------------------------
 	//Check if entity (element) is different from nullptr
@@ -88,7 +88,7 @@ void P_Follow::render(fPoint pos)
 	//-------------------------------------------------------------------------------
 }
 
-void P_Follow::Update_position(fPoint* element)
+void P_Follow::Update_position(iPoint* element)
 {
 	pos.x = element->x;
 	pos.x -= offset.x;

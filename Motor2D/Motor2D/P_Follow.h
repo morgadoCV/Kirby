@@ -10,7 +10,7 @@ class Particle;
 class P_Follow
 {
 public:
-	P_Follow(fPoint* object_follow, fPoint offset, SDL_Rect initial_rect = { 0,0,8,2 }, iPoint area = { 12, 2 }, iPoint timelife = { 15,5 }, int Size = 1, int num_textures = 4, int num_particles = 20, bool active_ = false, bool isMouse = false);
+	P_Follow(iPoint* object_follow, fPoint offset, SDL_Rect initial_rect = { 0,0,8,2 }, iPoint area = { 12, 2 }, iPoint timelife = { 15,5 }, int Size = 1, int num_textures = 4, int num_particles = 20, bool active_ = false, bool isMouse = false);
 	~P_Follow();
 
 	// Called each loop iteration
@@ -21,7 +21,7 @@ public:
 
 	void render(fPoint pos);
 
-	void Update_position(fPoint* pos);
+	void Update_position(iPoint* pos);
 
 
 public:
@@ -30,7 +30,7 @@ public:
 	//Also, create a pointer to an entity (SceneElement*)
 	//And finally a pointer to an iPoint (iPoint*)
 	p2DynArray<Particle*> particle;
-	fPoint* object_follow;
+	iPoint* object_follow;
 	//-----------------------------------------------------------------------------
 	//Num of particles
 	int number_particles;

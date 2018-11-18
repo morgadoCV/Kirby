@@ -132,12 +132,11 @@ bool Player::Update(float dt)
 
 	if (state != DEAD && GoDead == false)
 	{
-		Input();
+		Input(dt);
 	}
 
 	processPos();
-	processGravity();
-	ReturnToZero();
+	processGravity(dt);
 
 	if (App->map->NextLvl(position.x, position.y, current_animation->frames[0].w, current_animation->frames[0].h))
 	{
@@ -242,27 +241,27 @@ bool Player::Load(pugi::xml_node &node)
 {
 	bool ret = true;
 	state = IDLE;
-	if (actualvl != node.child("position").attribute("Actual_LVL").as_int())
+	if (actualvl != node.child("Player").child("position").attribute("Actual_LVL").as_int())
 	{
-		if(LVL_1 != node.child("position").attribute("Actual_LVL").as_int())
+		if (LVL_1 != node.child("Player").child("position").attribute("Actual_LVL").as_int())
 		{
 			ChangeMap("LVL2.tmx");
-			position.x = node.child("position").attribute("x").as_int();
-			position.y = node.child("position").attribute("y").as_int();
+			position.x = node.child("Player").child("position").attribute("x").as_int();
+			position.y = node.child("Player").child("position").attribute("y").as_int();
 			actualvl = LVL_2;
 		}
 		else
 		{
 			ChangeMap("LVL3.tmx");
-			position.x = node.child("position").attribute("x").as_int();
-			position.y = node.child("position").attribute("y").as_int();
+			position.x = node.child("Player").child("position").attribute("x").as_int();
+			position.y = node.child("Player").child("position").attribute("y").as_int();
 			actualvl = LVL_1;
 		}
 	}
 	else
 	{
-		position.x = node.child("position").attribute("x").as_int();
-		position.y = node.child("position").attribute("y").as_int();
+		position.x = node.child("Player").child("position").attribute("x").as_int();
+		position.y = node.child("Player").child("position").attribute("y").as_int();
 	}
 
 
@@ -273,7 +272,7 @@ bool Player::Save(pugi::xml_node &node)const
 {
 	bool ret = true;
 
-	pugi::xml_node playerpos = node.append_child("position");
+	pugi::xml_node playerpos = node.append_child("Player").append_child("position");
 
 	playerpos.append_attribute("x") = position.x;
 	playerpos.append_attribute("y") = position.y;
@@ -324,16 +323,16 @@ void Player::FollowPlayer(float speed)
 	}
 }
 
-void Player::Input()
+void Player::Input(float dt)
 {
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT &&
 		App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 	{
 		direction = LEFT;
-		if (App->map->MovementCost(position.x - Velocity_X, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
+		if (App->map->MovementCost(position.x - ceil(Velocity_X * dt), position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
 		{
-			position.x -= Velocity_X;
-			FollowPlayer(Velocity_X);
+			FollowPlayer(ceil(Velocity_X * dt));
+			position.x -= ceil(Velocity_X * dt);
 			isMove = true;
 		}
 		else
@@ -347,18 +346,16 @@ void Player::Input()
 	{
 		direction = NON;
 		isMove = false;
-		//returntoZero = true;
-		//goZero = LEFT;
 		if (!isFly)state = IDLE;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_IDLE)
 	{
 		direction = LEFT;
-		if (App->map->MovementCost(position.x - Velocity_X * 2, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
+		if (App->map->MovementCost(position.x - ceil(Velocity_X * 2 * dt), position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
 		{
-			position.x -= Velocity_X * 2;
-			FollowPlayer(Velocity_X * 2);
+			FollowPlayer(ceil(Velocity_X * 2 * dt));
+			position.x -= ceil(Velocity_X * 2 * dt);
 			isMove = true;
 		}
 		else
@@ -370,10 +367,10 @@ void Player::Input()
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 	{
 		direction = RIGHT;
-		if (App->map->MovementCost(position.x + Velocity_X, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
+		if (App->map->MovementCost(position.x + ceil(Velocity_X * dt), position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
 		{
-			position.x += Velocity_X;
-			FollowPlayer(Velocity_X);
+			FollowPlayer(ceil(Velocity_X * dt));
+			position.x += ceil(Velocity_X * dt);
 			isMove = true;
 		}
 		else
@@ -386,18 +383,16 @@ void Player::Input()
 	{
 		direction = NON;
 		isMove = false;
-		//returntoZero = true;
-		//goZero = RIGHT;
 		if (!isFly)state = IDLE;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_IDLE)
 	{
 		direction = RIGHT;
-		if (App->map->MovementCost(position.x + Velocity_X * 2, position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
+		if (App->map->MovementCost(position.x + ceil(Velocity_X * 2 * dt), position.y, current_animation->frames[0].w, current_animation->frames[0].h, direction))
 		{
-			position.x += Velocity_X * 2;
-			FollowPlayer(Velocity_X * 2);
+			FollowPlayer(ceil(Velocity_X * 2 * dt));
+			position.x += ceil(Velocity_X * 2 * dt);
 			isMove = true;
 		}
 		else
@@ -416,13 +411,13 @@ void Player::Input()
 			{
 				App->audio->PlayFx(1);
 				state = JUMP_LEFT;
-				velocity.y -= Velocity_Y;
+				velocity.y -= ceil(Velocity_Y * dt);
 				isFly = true;
 			}
 			if (state == W_RIGHT || state == RUN_RIGHT || state == IDLE)
 			{
 				App->audio->PlayFx(1);
-				velocity.y -= Velocity_Y;
+				velocity.y -= ceil(Velocity_Y * dt);
 				state = JUMP_RIGHT;
 				isFly = true;
 			}
@@ -455,32 +450,7 @@ void Player::Input()
 	}
 }
 
-void Player::ReturnToZero()
-{
-	if (returntoZero && goZero != NON)
-	{
-		if (goZero == LEFT)
-		{
-			velocity.x += 0.004f;
-			if (velocity.x <= 0.1f && velocity.x >= -0.1f)
-			{
-				velocity.x = 0;
-				goZero = NON;
-				returntoZero = false;
-			}
-		}
-		else
-		{
-			velocity.x -= 0.004f;
-			if (velocity.x <= 0.1f && velocity.x >= -0.1f)
-			{
-				velocity.x = 0;
-				goZero = NON;
-				returntoZero = false;
-			}
-		}
-	}
-}
+
 
 void Player::Setzero()
 {
@@ -490,13 +460,11 @@ void Player::Setzero()
 
 void Player::processPos()
 {
-	//TODO SERGIO 4: CAP MAX VELOCITY
-	//if(velocity.) 
-	position.x = position.x + velocity.x;   // Change position based on 
+	//position.x = position.x + velocity.x;   // Change position based on 
 	position.y = position.y + velocity.y;   // current velocity components.
 }
 
-void Player::processGravity()
+void Player::processGravity(float dt)
 {
 	if (velocity.y < 0)
 	{
@@ -508,7 +476,9 @@ void Player::processGravity()
 	}
 	if (App->map->MovementCost(position.x, position.y, current_animation->frames[0].w, current_animation->frames[0].h, DOWN) && state != FLY_LEFT && state != FLY_RIGHT)
 	{
-		velocity.y += Gravity;
+		apply_g = !apply_g;
+		if (apply_g)
+			velocity.y += ceil(Gravity * dt);
 	}
 	else if (isFly == false)
 	{
@@ -528,7 +498,7 @@ void Player::processGravity()
 		}
 		else
 		{
-			velocity.y = 0.8;
+			velocity.y = ceil(Gravity_LOW * dt);
 		}
 	}
 
@@ -643,7 +613,11 @@ bool Player::CleanUp()
 	return true;
 }
 
-fPoint* Player::Getposition()
+iPoint Player::Getposition() const
+{
+	return position;
+}
+iPoint* Player::GetpositionPointer()
 {
 	return &position;
 }

@@ -3,13 +3,15 @@
 #include "p2Point.h"
 #include "Animation.h"
 #include "Criature.h"
+#include "p2DynArray.h"
 //#include "ParticleManager.h"
 //#include "P_Follow.h"
 
 #define AnimationSpeed4 0.15f
 #define AnimationSpeedDead 0.019f
 
-struct SDL_Texture;
+struct	SDL_Texture;
+class	j1Astar;
 
 class EnemyNormal : public Criature
 {
@@ -24,9 +26,9 @@ public:
 	bool PreUpdate();
 	// Called each loop iteration
 	bool Update(float dt);
+	void MoveEnemy(float dt);
 	void processPos();
-	void processGravity();
-	void ReturnToZero();
+	void processGravity(float dt);
 	void Draw();
 	// Called before all Updates
 	bool PostUpdate();
@@ -39,16 +41,18 @@ public:
 	bool CleanUp();
 
 private:
-	State state;
-	Direction direction;
-	SDL_Texture* graphics = nullptr;
-	bool isMove = false;
-	fPoint position;
-	fPoint velocity;
-	Animation* current_animation;
-	Animation idle;
-	Animation run_right;
-	Animation run_left;
-	Animation dead;
+	State			state;
+	Direction		direction;
+	SDL_Texture*	graphics = nullptr;
+	bool			isMove = false;
+	iPoint			position;
+	fPoint			velocity;
+	Animation*		current_animation;
+	p2DynArray<iPoint>* path;
+	j1Astar*		astar = nullptr;
+	Animation		idle;
+	Animation		run_right;
+	Animation		run_left;
+	Animation		dead;
 
 };

@@ -5,10 +5,14 @@
 
 ManagerCriatures::ManagerCriatures() : j1Module()
 {
+	name = "Criatures";
 }
+
 ManagerCriatures::~ManagerCriatures()
 {
+
 }
+
 bool ManagerCriatures::Awake(pugi::xml_node & conf)
 {
 	CreatePlayer();
@@ -16,6 +20,7 @@ bool ManagerCriatures::Awake(pugi::xml_node & conf)
 	CreateEnemyNormal();
 	return true;
 }
+
 bool ManagerCriatures::Start()
 {
 	p2List_item<Criature*>* item = elements.start;
@@ -26,6 +31,7 @@ bool ManagerCriatures::Start()
 	}
 	return true;
 }
+
 bool ManagerCriatures::PreUpdate()
 {
 	p2List_item<Criature*>* item = elements.start;
@@ -36,6 +42,7 @@ bool ManagerCriatures::PreUpdate()
 	}
 	return true;
 }
+
 bool ManagerCriatures::Update(float dt)
 {
 	p2List_item<Criature*>* item = elements.start;
@@ -46,6 +53,7 @@ bool ManagerCriatures::Update(float dt)
 	}
 	return true;
 }
+
 bool ManagerCriatures::PostUpdate()
 {
 	p2List_item<Criature*>* item = elements.start;
@@ -56,6 +64,7 @@ bool ManagerCriatures::PostUpdate()
 	}
 	return true;
 }
+
 void ManagerCriatures::CreatePlayer()
 {
 	player = new Player();
@@ -63,6 +72,7 @@ void ManagerCriatures::CreatePlayer()
 	elements.add(player);
 	LOG("Player Created!");
 }
+
 void ManagerCriatures::CreateEnemyFly()
 {
 	EnemyFly* enemy_fly = new EnemyFly();
@@ -70,10 +80,32 @@ void ManagerCriatures::CreateEnemyFly()
 	elements.add(enemy_fly);
 	LOG("Enemy Fly Created!");
 }
+
 void ManagerCriatures::CreateEnemyNormal()
 {
 	EnemyNormal* enemy_normal = new EnemyNormal();
 	enemy_normal->Awake();
 	elements.add(enemy_normal);
 	LOG("Enemy Normal Created!");
+}
+
+bool ManagerCriatures::Load(pugi::xml_node& node)
+{
+	p2List_item<Criature*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->Load(node);
+		item = item->next;
+	}
+	return true;
+}
+bool ManagerCriatures::Save(pugi::xml_node& node) const
+{
+	p2List_item<Criature*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->Save(node);
+		item = item->next;
+	}
+	return true;
 }

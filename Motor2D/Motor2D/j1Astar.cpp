@@ -64,7 +64,7 @@ void j1Astar::PropagateAstar(iPoint destination)
 		}
 	}
 }
-p2DynArray<iPoint> * j1Astar::GenerateAstar(iPoint origin, iPoint destination)
+p2DynArray<iPoint>* j1Astar::GenerateAstar(iPoint origin, iPoint destination)
 {
 	iPoint map_origin = App->map->WorldToMap(origin.x, origin.y);
 	iPoint map_destination = App->map->WorldToMap(destination.x, destination.y);
@@ -76,20 +76,22 @@ p2DynArray<iPoint> * j1Astar::GenerateAstar(iPoint origin, iPoint destination)
 	NodeList open;
 	open.node_list.add(Node(0, map_origin.DistanceManhattan(map_destination), map_origin, nullptr));
 
-	while (open.node_list.count != 0)
+	while (open.node_list.count() != 0)
 	{
 		close.node_list.add(open.GetLowerNode()->data);
 		open.node_list.del(open.GetLowerNode());
 		if (close.node_list.end->data.position == map_destination)
 		{
-			p2DynArray<iPoint>* positions;
+			p2DynArray<iPoint>* positions = new p2DynArray<iPoint>;
 
 			for (p2List_item<Node>* iterator = close.node_list.end; iterator->data.parent != nullptr; iterator = close.Find(iterator->data.parent->position))
 			{
-				positions->PushBack(iterator->data.position);
+				iPoint world_position = App->map->MapToWorld(iterator->data.position.x, iterator->data.position.y);
+				positions->PushBack(world_position);
 			}
-			positions->PushBack(close.node_list.start->data.position);
-			positions->Flip();
+			iPoint world_position = App->map->MapToWorld(close.node_list.start->data.position.x, close.node_list.start->data.position.y);
+			positions->PushBack(world_position);
+
 			return positions;
 		}
 		else
@@ -188,12 +190,28 @@ void Node::FillNeigborhs(NodeList & list)
 		}
 	}
 }
+
 void Node::CalculateF(const iPoint & destination)
 {
 	g = parent->g + 1;
 	h = position.DistanceManhattan(destination);
 }
+
 int Node::DataTile()
 {
 	return g + h;
+}
+
+
+Node::Node()
+{
+
+}
+
+Node::Node(int g_n, int h_n, iPoint positions_n, Node * parent_n)
+{
+	g = g_n;
+	h = h_n;
+	position = positions_n;
+	parent = parent_n;
 }

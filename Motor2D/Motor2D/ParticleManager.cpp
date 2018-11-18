@@ -119,7 +119,7 @@ bool ParticleManager::CleanUp()
 
 //CREATE GROUPS -------------------------------------------------------------------------------------------------------------------------------------
 
-void ParticleManager::CreateFollow_P(fPoint* object_follow, fPoint offset, SDL_Rect initial_rect, iPoint area, iPoint timelife, int size, int num_textures, int num_particles, bool active, bool isMouse)
+void ParticleManager::CreateFollow_P(iPoint* object_follow, fPoint offset, SDL_Rect initial_rect, iPoint area, iPoint timelife, int size, int num_textures, int num_particles, bool active, bool isMouse)
 {
 	Group_Follow.add(new P_Follow(object_follow, offset, initial_rect, area, timelife, size, num_textures, num_particles, active, isMouse));
 }

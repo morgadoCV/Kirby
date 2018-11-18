@@ -25,6 +25,9 @@ public:
 	void CreatePlayer();
 	void CreateEnemyFly();
 	void CreateEnemyNormal();
+	bool Load(pugi::xml_node&);
+	bool Save(pugi::xml_node&)const;
+
 public:
 	p2List<Criature*> elements;
 	Player* player = nullptr;

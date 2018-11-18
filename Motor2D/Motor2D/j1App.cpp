@@ -168,13 +168,14 @@ bool j1App::LoadConfig()
 void j1App::PrepareUpdate()
 {
 	frame_count++;
+	last_sec_frame_count++;
+	dt = frame_time.ReadSec();
 	frame_time.Start();
 }
 
 // ---------------------------------------------
 void j1App::FinishUpdate()
 {
-	
 	if (need_load)
 	{
 		DocLoad();
@@ -186,8 +187,16 @@ void j1App::FinishUpdate()
 		need_save = false;
 	}
 
-	uint32 last_frame_ms = frame_time.Read();
+	
 	float avg_fps = float(frame_count) / startup_time.ReadSec();
+	float seconds_since_startup = startup_time.ReadSec();
+	uint32 last_frame_ms = frame_time.Read();
+	uint32 frames_on_last_update = prev_last_sec_frame_count;
+	static char title[256];
+	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %u Last sec frames: %i MORGUIKIRBI",
+		avg_fps, last_frame_ms, frames_on_last_update);
+	App->win->SetTitle(title);
+
 	//static char title[256];
 	if (capped_ms > 0 && last_frame_ms < capped_ms)
 	{
