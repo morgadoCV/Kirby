@@ -2,6 +2,7 @@
 #include "j1App.h"
 #include "p2Defs.h"
 #include "p2Log.h"
+#include "j1Input.h"
 
 ManagerCriatures::ManagerCriatures() : j1Module()
 {
@@ -13,11 +14,9 @@ ManagerCriatures::~ManagerCriatures()
 
 }
 
-bool ManagerCriatures::Awake(pugi::xml_node & conf)
+bool ManagerCriatures::Awake(pugi::xml_node& conf)
 {
 	CreatePlayer();
-	CreateEnemyFly();
-	CreateEnemyNormal();
 	return true;
 }
 
@@ -73,21 +72,59 @@ void ManagerCriatures::CreatePlayer()
 	LOG("Player Created!");
 }
 
-void ManagerCriatures::CreateEnemyFly()
+void ManagerCriatures::CreateEnemyFly(iPoint position)
 {
 	EnemyFly* enemy_fly = new EnemyFly();
 	enemy_fly->Awake();
+	enemy_fly->Start();
+	enemy_fly->position = position;
 	elements.add(enemy_fly);
 	LOG("Enemy Fly Created!");
 }
 
-void ManagerCriatures::CreateEnemyNormal()
+void ManagerCriatures::CreateEnemyNormal(iPoint position)
 {
 	EnemyNormal* enemy_normal = new EnemyNormal();
 	enemy_normal->Awake();
+	enemy_normal->Start();
+	enemy_normal->position = position;
 	elements.add(enemy_normal);
 	LOG("Enemy Normal Created!");
 }
+
+void ManagerCriatures::DeleteEnemyFly(Criature* enemyFly)
+{
+	int i = elements.find(enemyFly);
+	int ds = 0;
+	p2List_item<Criature*>* item = elements.start;
+	while (item != NULL)
+	{
+		if (i == ds)
+		{
+			elements.del(item);
+			return;
+		}
+		ds++;
+		item = item->next;
+	}
+}
+void ManagerCriatures::DeleteEnemyNormal(Criature* enemy_normal)
+{
+	int i = elements.find(enemy_normal);
+	int ds = 0;
+	p2List_item<Criature*>* item = elements.start;
+	while (item != NULL)
+	{
+		if (i == ds)
+		{
+			elements.del(item);
+			return;
+		}
+		ds++;
+		item = item->next;
+	}
+}
+
 
 bool ManagerCriatures::Load(pugi::xml_node& node)
 {

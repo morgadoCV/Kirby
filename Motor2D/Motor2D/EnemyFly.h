@@ -34,7 +34,7 @@ public:
 	bool Load(pugi::xml_node &);
 	bool Save(pugi::xml_node&)const;
 	int GetDirection() const;
-	fPoint* Getposition() const;
+	iPoint Getposition() const;
 	// Called before quitting
 	bool CleanUp();
 
@@ -43,9 +43,7 @@ private:
 	Direction direction;
 	SDL_Texture* graphics = nullptr;
 	bool isMove = false;
-	fPoint position;
-	fPoint velocity;
-	Animation* current_animation;
+	Animation* current_animation = new Animation();
 	Animation idle;
 	Animation idle_left;
 	Animation fly_right;

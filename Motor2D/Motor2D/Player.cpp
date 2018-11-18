@@ -11,6 +11,7 @@
 #include "j1FadeToBlack.h"
 #include "j1Map.h"
 #include "j1Scene.h"
+#include "ManagerCriatures.h"
 
 
 Player::Player() : Criature()
@@ -98,6 +99,7 @@ bool Player::Start()
 	state = IDLE;
 	App->Save();
 	fade = false;
+	position.create(App->map->GetPositionStart().x, App->map->GetPositionStart().y);
 	collision_feet = App->collision->AddCollider({ (int)position.x, (int)position.y - 45, 45, 45 }, COLLIDER_PLAYER, this);
 	return true;
 }
@@ -111,11 +113,11 @@ bool Player::Update(float dt)
 {
 	
 
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 	{
 		StartFromFirstLvl();
 	}
-	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
 	{
 		StartFromBeginCurrentLvl();
 	}
@@ -624,5 +626,10 @@ iPoint* Player::GetpositionPointer()
 
 void Player::OnCollision(Collider* player, Collider* enemy)
 {
-	LOG("HIT!");
+	//LOG("HIT!");
+	if (player != nullptr && enemy != nullptr)
+	{
+		App->managerC->DeleteEnemyNormal(enemy->callback);
+		LOG("Delete Enemy");
+	}
 }

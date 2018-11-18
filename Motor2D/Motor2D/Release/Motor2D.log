@@ -1,31 +1,50 @@
-﻿  Player.cpp
-Player.cpp(293): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(293): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(300): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(300): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(312): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(312): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(314): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(319): warning C4018: '>': no coinciden signed/unsigned
-Player.cpp(319): warning C4018: '<': no coinciden signed/unsigned
-Player.cpp(321): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(332): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(335): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(355): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(358): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(370): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(373): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(392): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(395): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(414): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(420): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(481): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-Player.cpp(501): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  EnemyNormal.cpp
+EnemyNormal.cpp(23): warning C4305: '=': truncamiento de 'double' a 'float'
+EnemyNormal.cpp(97): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  d:\kirby\motor2d\motor2d\p2Point.h(110): note: durante la compilación de la función miembro de plantilla clase de 'int p2Point<int>::DistanceTo(const p2Point<int> &) const'
+  EnemyNormal.cpp(85): note: vea la referencia a la creación de instancias de plantilla de función 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' que se está compilando
+  d:\kirby\motor2d\motor2d\Criature.h(85): note: vea la referencia a la creación de instancias de plantilla clase de 'p2Point<int>' que se está compilando
+d:\kirby\motor2d\motor2d\p2Point.h(114): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  j1App.cpp
+j1App.cpp(201): warning C4018: '<': no coinciden signed/unsigned
+  j1Map.cpp
+j1Map.cpp(61): warning C4305: '+=': truncamiento de 'double' a 'float'
+j1Map.cpp(62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(66): warning C4305: '-=': truncamiento de 'double' a 'float'
+j1Map.cpp(67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(72): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(189): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(190): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+j1Map.cpp(704): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+j1Map.cpp(720): warning C4244: 'argumento': conversión de 'int' a 'const float'; posible pérdida de datos
+  ManagerCriatures.cpp
+  Player.cpp
+Player.cpp(295): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(295): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(302): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(302): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(314): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(314): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(316): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(321): warning C4018: '>': no coinciden signed/unsigned
+Player.cpp(321): warning C4018: '<': no coinciden signed/unsigned
+Player.cpp(323): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(334): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(337): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(357): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(360): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(372): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(375): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(394): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(397): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(416): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(422): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(483): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+Player.cpp(503): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Generando código
-d:\kirby\motor2d\motor2d\j1map.cpp(291): warning C4715: 'j1Map::GetPositionStart': no todas las rutas de acceso de control devuelven un valor
-d:\kirby\motor2d\motor2d\j1app.cpp(360): warning C4715: 'j1App::DocLoad': no todas las rutas de acceso de control devuelven un valor
-  130 of 696 functions (18.7%) were compiled, the rest were copied from previous compilation.
-    52 functions were new in current compilation
-    21 functions had inline decision re-evaluated but remain unchanged
+  57 of 700 functions ( 8.1%) were compiled, the rest were copied from previous compilation.
+    6 functions were new in current compilation
+    26 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Motor2D.vcxproj -> D:\Kirby\Motor2D\Release\Motor 2D.exe

@@ -151,9 +151,9 @@ int EnemyFly::GetDirection() const
 	return 0;
 }
 
-fPoint * EnemyFly::Getposition() const
+iPoint EnemyFly::Getposition() const
 {
-	return nullptr;
+	return position;
 }
 
 bool EnemyFly::CleanUp()

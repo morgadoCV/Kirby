@@ -211,6 +211,7 @@ public:
 
 	// Load new map
 	bool Load(const char* path);
+	void LoadEnemies();
 
 private:
 	

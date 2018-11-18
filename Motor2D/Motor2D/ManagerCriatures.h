@@ -23,8 +23,10 @@ public:
 	// Called before all Updates
 	bool PostUpdate();
 	void CreatePlayer();
-	void CreateEnemyFly();
-	void CreateEnemyNormal();
+	void CreateEnemyFly(iPoint position);
+	void CreateEnemyNormal(iPoint position);
+	void DeleteEnemyFly(Criature* enemyFly);
+	void DeleteEnemyNormal(Criature* enemy_normal);
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&)const;
 
