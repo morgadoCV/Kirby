@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<save>
+	<input />
+	<window />
+	<textures />
+	<audio>
+		<audio volume="40" />
+	</audio>
+	<map />
+	<scene />
+	<player>
+		<position x="85" y="354" Actual_LVL="0" />
+	</player>
+	<:anonymous />
+	<fadetoblack />
+	<renderer>
+		<camera x="0" y="0" />
+	</renderer>
+</save>
